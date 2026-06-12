@@ -1,0 +1,27 @@
+{
+	"version": "0.2.0",
+	"compounds": [
+		{
+			"name": "Debug Race Legends",
+			"configurations": [
+				"Launch Dev Server",
+				"Open in Chrome"
+			]
+		}
+	],
+	"configurations": [
+		{
+			"name": "Launch Dev Server",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "npm run dev"
+		},
+		{
+			"name": "Open in Chrome",
+			"type": "pwa-chrome",
+			"request": "launch",
+			"url": "http://127.0.0.1:4173",
+			"webRoot": "${workspaceFolder}"
+		}
+	]
+}
