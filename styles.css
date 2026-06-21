@@ -217,6 +217,52 @@ body {
   line-height: 1.2;
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  min-height: 100px;
+  background: #f8f9fa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.video-card:hover {
+  background: #eef0f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.video-card__tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #d93025; /* YouTube red */
+  margin-bottom: 4px;
+}
+
+.video-card__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.video-card--short {
+  border-left: 4px solid #d93025;
+}
+
 .policy {
   width: min(100%, 944px);
   margin: 0 auto;
