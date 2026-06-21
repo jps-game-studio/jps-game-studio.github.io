@@ -11,7 +11,9 @@
       if (!localStorage.getItem('cookieConsent')) {
         gtag('consent', 'default', {
           'analytics_storage': 'denied',
-          'ad_storage': 'denied'
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
         });
       } else {
         const consent = JSON.parse(localStorage.getItem('cookieConsent'));

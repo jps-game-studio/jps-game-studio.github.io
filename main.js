@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const consent = {
       analytics_storage: granted ? "granted" : "denied",
       ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
     };
     localStorage.setItem("cookieConsent", JSON.stringify(consent));
     if (typeof gtag === "function") {
