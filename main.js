@@ -32,6 +32,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (acceptBtn) acceptBtn.onclick = () => setConsent(true);
   if (rejectBtn) rejectBtn.onclick = () => setConsent(false);
+
+  // Track Store and Video Clicks
+  const trackEvent = (category, action, label) => {
+    if (typeof gtag === "function") {
+      gtag("event", action, {
+        event_category: category,
+        event_label: label,
+      });
+    }
+  };
+
+  // Google Play Click
+  const storeCta = document.querySelector(".store-cta");
+  if (storeCta) {
+    storeCta.addEventListener("click", () => {
+      trackEvent("Engagement", "click_google_play", "Store Link");
+    });
+  }
+
+  // Video Clicks
+  document.querySelectorAll(".video-grid .video-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const title =
+        card.querySelector(".video-card__title")?.textContent ||
+        "Unknown Video";
+      const type = card.classList.contains("video-card--short")
+        ? "Short"
+        : "Full Video";
+      trackEvent("Engagement", "view_video", `${type}: ${title}`);
+    });
+  });
 });
 
 if (
