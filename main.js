@@ -8,12 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   console.debug("Race Legends page ready", pageState);
 
   // Cookie Banner Logic
-  const banner = document.getElementById("cookie-banner");
+  const overlay = document.getElementById("cookie-overlay");
   const acceptBtn = document.getElementById("cookie-accept");
   const rejectBtn = document.getElementById("cookie-reject");
 
-  if (banner && !localStorage.getItem("cookieConsent")) {
-    banner.style.display = "block";
+  if (overlay && !localStorage.getItem("cookieConsent")) {
+    overlay.style.display = "flex";
+    document.body.classList.add("modal-open");
   }
 
   const setConsent = (granted) => {
@@ -27,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof gtag === "function") {
       gtag("consent", "update", consent);
     }
-    banner.style.display = "none";
+    overlay.style.display = "none";
+    document.body.classList.remove("modal-open");
   };
 
   if (acceptBtn) acceptBtn.onclick = () => setConsent(true);

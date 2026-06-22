@@ -450,34 +450,100 @@ body {
   }
 }
 
-/* Cookie Banner Styles */
-.cookie-banner {
+/* Cookie Overlay & Modal Styles */
+.cookie-overlay {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cookie-banner {
+  width: min(90%, 500px);
   background: #ffffff;
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  padding: 24px 0;
+  border-radius: 20px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .cookie-banner__inner {
-  width: min(100%, 944px);
-  margin: 0 auto;
-  padding: 0 64px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
+  text-align: center;
 }
 
 .cookie-banner__text {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text);
+}
+
+.cookie-banner__text a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.cookie-btn {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.cookie-btn--primary {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.cookie-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .cookie-banner {
+    padding: 32px 24px;
+  }
+  
+  .cookie-banner__actions {
+    flex-direction: column;
+  }
+}
+
+.policy {
 }
 
 .cookie-banner__text proletarian {
